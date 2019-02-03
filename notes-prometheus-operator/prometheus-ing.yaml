@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    #nginx.ingress.kubernetes.io/rewrite-target: /graph
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  generation: 1
+  name: prometheus
+  namespace: monitoring
+spec:
+  rules:
+  - host: prometheus.alpha-k8s-cn4.eniot.io
+    http:
+      paths:
+      - backend:
+          serviceName: prometheus-k8s
+          servicePort: 9090
+        path: /
+status:
+  loadBalancer: {}
+

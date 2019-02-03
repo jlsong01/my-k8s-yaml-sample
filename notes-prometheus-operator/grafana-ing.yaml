@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    #nginx.ingress.kubernetes.io/rewrite-target: /graph
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  generation: 1
+  name: grafana
+  namespace: monitoring
+spec:
+  rules:
+  - host: grafana.alpha-k8s-cn4.eniot.io
+    http:
+      paths:
+      - backend:
+          serviceName: grafana
+          servicePort: 3000
+        path: /
+status:
+  loadBalancer: {}
+

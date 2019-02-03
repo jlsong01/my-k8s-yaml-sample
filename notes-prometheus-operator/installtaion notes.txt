@@ -1,0 +1,2 @@
+master最新版本代码有问题，取v0.27版本或者v0.27 tag
+git checkout v0.27.0
