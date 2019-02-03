@@ -1,0 +1,12 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: prom
+  namespace: monitoring
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeName: prom-pv
+  resources:
+    requests:
+      storage: 1Gi
