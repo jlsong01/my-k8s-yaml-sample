@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: gpu-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: digits-container
+        image: nvidia/digits:6.0
+        resources:
+          limits:
+  #          alpha.kubernetes.io/nvidia-gpu: 2
+            nvidia.com/gpu: 3 # requesting 3 GPUs
+        command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      restartPolicy: Never
+  backoffLimit: 4
