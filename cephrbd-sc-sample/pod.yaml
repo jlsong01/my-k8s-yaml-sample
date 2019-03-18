@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: cephrbd-sc-pod
+  name: cephrbd-sc-pod
+spec:
+  containers:
+  - name: cephrbd-sc-busybox
+    image: busybox
+    command: ["sleep", "60000"]
+    volumeMounts:
+    - mountPath: "/mnt/cephrbd-sc"
+      name: cephrbd-vol1
+      readOnly: false
+  volumes:
+  - name: cephrbd-vol1
+    persistentVolumeClaim:
+      claimName: claim1

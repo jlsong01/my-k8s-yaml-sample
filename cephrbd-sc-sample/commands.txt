@@ -1,0 +1,6 @@
+# generate secret w/ raw key without base64 decoding
+kubectl create secret generic ceph-secret-admin --type="kubernetes.io/rbd" --from-literal=key='AQDM5SBbjPjyBhAAKDxIwZwEviNoevcBudAH1w=='
+kubectl create secret generic ceph-secret --type="kubernetes.io/rbd" --from-literal=key='AQCXQopccv+bEhAAJkYXp7Tpyp+62fioFr+HJQ==' -n default
+
+# patch storageclass as default
+kubectl patch storageclass fast -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
