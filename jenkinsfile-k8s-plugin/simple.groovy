@@ -1,4 +1,3 @@
-
 pipeline {
   agent {
     kubernetes {
@@ -20,7 +19,7 @@ spec:
     stage('Run task in pod') {
       steps {
         container('ubuntu') {
-          sh 'for i in `seq 1 10000`; do echo $i; sleep 10; done!'
+          sh 'for i in `seq 1 10000`; do echo $i; sleep 10; done'
         }
       }
     }
