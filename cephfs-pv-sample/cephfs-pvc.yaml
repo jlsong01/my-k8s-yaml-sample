@@ -7,6 +7,7 @@ spec:
   accessModes:
     - ReadWriteMany
   volumeName: prom-pv
+  storageClassName: ""  # 必须设置这一行，否则pvc会根据default storageclass动态创建pv
   resources:
     requests:
       storage: 1Gi
